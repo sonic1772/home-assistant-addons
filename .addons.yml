@@ -1,0 +1,14 @@
+# This file is used to define custom add-ons for Home Assistant.
+# It specifies the repository, target, image, and version for each add-on.
+channel: stable
+addons:
+  heimdall:
+    repository: sonic1772/home-assistant-addons/heimdall
+    target: heimdall
+    image: ghcr.io/benoitanastay/heimdall/{arch}
+    version: 0.0.6
+  Paperless-AI:
+    repository: sonic1772/home-assistant-addons/Paperless-AI
+    target: Paperless-AI
+    image: ghcr.io/clusterzx/paperless-ai/{arch}
+    version: 0.0.1
