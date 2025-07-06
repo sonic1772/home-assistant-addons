@@ -1,5 +1,5 @@
 name: Paperless AI
-version: 0.1.5.10
+version: 0.1.5.11
 slug: paperless_ai
 description: Chat-basierte KI für Paperless-ngx (clusterzx/paperless-ai)
 url: https://github.com/clusterzx/paperless-ai
@@ -19,6 +19,10 @@ options:
 schema:
   paperless_ai_port: int
   rag_service_url: str
+services:
+  - service: start
+    description: Startet Paperless AI
+
 
 
 
