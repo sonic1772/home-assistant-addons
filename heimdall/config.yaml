@@ -23,3 +23,4 @@ schema:
   PUID: int
   PGID: int
   TZ: str?
+image: ghcr.io/benoitanastay/heimdall/{arch}
