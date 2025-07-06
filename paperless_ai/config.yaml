@@ -1,6 +1,6 @@
 ---
 name: Paperless AI
-version: 0.1.3
+version: 0.1.4
 slug: paperless_ai
 url: https://github.com/clusterzx/paperless-ai
 #init: false
@@ -16,6 +16,7 @@ ports_description:
   3000/tcp: Web interface
 map:
   - share:rw
+  - addon_config:rw
 options:
   paperless_ai_port: 3000
 schema:
