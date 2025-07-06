@@ -1,24 +1,30 @@
----
 name: Paperless AI
-version: 0.1.5.2
+version: 0.1.5.3
 slug: paperless_ai
+description: Chat-basierte KI für Paperless-ngx (clusterzx/paperless-ai)
 url: https://github.com/clusterzx/paperless-ai
-#init: false
-description: Chat-basierte KI für Paperless-ngx
+startup: services
+boot: auto
 webui: http://[HOST]:[PORT:3000]
-stage: experimental
 arch:
   - amd64
   - aarch64
-ports:
-  3000/tcp: 3000
-ports_description:
-  3000/tcp: Web interface
+
 map:
-  - type: addon_config
-    read_only: false
+  - share:rw
+
 options:
   paperless_ai_port: 3000
+  rag_service_url: http://a0d7b954-paperless:8000
+
 schema:
   paperless_ai_port: int
+  rag_service_url: str
+
+environment:
+  - PAPERLESS_AI_PORT={{ paperless_ai_port }}
+  - RAG_SERVICE_URL={{ rag_service_url }}
+  - RAG_SERVICE_ENABLED=true
+
+image: "clusterzx/paperless-ai:latest"
 
