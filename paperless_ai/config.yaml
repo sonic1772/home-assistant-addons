@@ -3,7 +3,7 @@ name: Paperless AI
 version: 0.1.1
 slug: paperless_ai
 url: https://github.com/clusterzx/paperless-ai
-init: false
+#init: false
 description: Chat-basierte KI für Paperless-ngx
 webui: http://[HOST]:[PORT:3000]
 stage: experimental
