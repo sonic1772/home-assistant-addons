@@ -1,6 +1,6 @@
 ---
 name: Heimdall
-version: 0.2.4.2
+version: 0.2.4.3
 slug: heimdall
 url: https://heimdall.site/
 init: false
@@ -15,7 +15,8 @@ ports:
 ports_description:
   80/tcp: Web interface
 map:
-  - share:rw
+  - type: share
+    read_only: false
 options:
   PUID: 1001
   PGID: 1001
