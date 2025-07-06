@@ -26,6 +26,12 @@ RUN apk add --no-cache jq \
 # Copy root filesystem
 COPY rootfs /
 
+
+# ➕ Wichtiger Teil: Berechtigungen setzen
+# Beispiel: Wenn du diese Dateien hast, musst du sie ausführbar machen
+RUN chmod +x /etc/cont-init.d/00-ha-env.sh \
+    && chmod +x /etc/s6-overlay/s6-rc.d/init-heimdall-config/run
+
 # Expose the port
 EXPOSE ${PORT}
 
