@@ -21,10 +21,7 @@ schema:
   paperless_ai_port: int
   rag_service_url: str
 
-environment:
-  - PAPERLESS_AI_PORT={{ paperless_ai_port }}
-  - RAG_SERVICE_URL={{ rag_service_url }}
-  - RAG_SERVICE_ENABLED=true
+
 
 image: "clusterzx/paperless-ai:latest"
 
