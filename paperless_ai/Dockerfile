@@ -1,2 +1,1 @@
 FROM clusterzx/paperless-ai:latest
-
