@@ -1,4 +1,5 @@
 name: Paperless AI
+version: 0.1.0
 slug: paperless_ai
 description: "Chat-basierte KI für Paperless-ngx (clusterzx/paperless-ai)"
 version: "0.1.0"
