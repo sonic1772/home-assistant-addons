@@ -7,7 +7,7 @@ addons:
     repository: sonic1772/home-assistant-addons/heimdall
     target: heimdall
     image: ghcr.io/benoitanastay/heimdall/{arch}
-  paperless-ai:
+  paperless_ai:
     repository: sonic1772/home-assistant-addons/paperless_ai
     target: paperless_ai
     image: ghcr.io/clusterzx/paperless-ai/{arch}
