@@ -1,1 +1,0 @@
-Paperless AI für Homeassistant
