@@ -9,5 +9,5 @@ addons:
     image: ghcr.io/benoitanastay/heimdall/{arch}
   paperless-ai:
     repository: sonic1772/home-assistant-addons/paperless-ai
-    target: paperless_ai
+    target: paperless-ai
     image: ghcr.io/clusterzx/paperless-ai/{arch}
