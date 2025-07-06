@@ -18,7 +18,6 @@ map:
   - share:rw
 options:
   paperless_ai_port: 3000
-  rag_service_url: http://a0d7b954-paperless:8000
 schema:
   paperless_ai_port: int
-  rag_service_url: str
+
