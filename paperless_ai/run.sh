@@ -1,22 +1,21 @@
 #!/usr/bin/with-contenv bashio
 
-# Konfigurationswerte auslesen
+# Port und Optionen lesen
 PAPERLESS_AI_PORT="$(bashio::config 'paperless_ai_port')"
-RAG_SERVICE_URL="$(bashio::config 'rag_service_url')"
-
 export PAPERLESS_AI_PORT=${PAPERLESS_AI_PORT:-3000}
-export RAG_SERVICE_URL=${RAG_SERVICE_URL:-http://localhost:8000}
-export RAG_SERVICE_ENABLED=true
 
-# Persistentes Verzeichnis unter /share
-SHARE_DIR="/share/paperless_ai_data"
-mkdir -p "$SHARE_DIR"
+# Zielordner im gemounteten Share-Verzeichnis
+SHARE_DATA_DIR="/share/paperless_ai_data"
 
-# Symlink nach /app/data setzen
+# Ordner anlegen
+mkdir -p "$SHARE_DATA_DIR"
+
+# Wenn kein Symlink existiert, lege einen an
 if [ ! -L /app/data ]; then
   rm -rf /app/data
-  ln -s "$SHARE_DIR" /app/data
+  ln -s "$SHARE_DATA_DIR" /app/data
 fi
 
 # Start der Anwendung
 exec ./start-services.sh
+
