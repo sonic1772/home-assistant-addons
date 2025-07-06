@@ -1,27 +1,25 @@
 #!/usr/bin/with-contenv bashio
 
-# Port & RAG-Service aus der Konfiguration laden
 PAPERLESS_AI_PORT="$(bashio::config 'paperless_ai_port')"
-RAG_SERVICE_URL="$(bashio::config 'rag_service_url')"
-
 export PAPERLESS_AI_PORT=${PAPERLESS_AI_PORT:-3000}
-export RAG_SERVICE_URL=${RAG_SERVICE_URL:-http://localhost:8000}
-export RAG_SERVICE_ENABLED=true
 
-# Zielordner auf dem Host (sichtbar unter /share/paperless_ai_data)
-SHARE_DIR="/share/paperless_ai_data"
-mkdir -p "$SHARE_DIR"
+SHARE_DATA_DIR="/share/paperless_ai_data"
 
-# Bestehenden Pfad im Container entfernen, falls nötig
-if [ ! -L /app/data ]; then
-  echo "📦 /app/data wird nach $SHARE_DIR verlinkt"
-  rm -rf /app/data
-  ln -s "$SHARE_DIR" /app/data
+# Sicherstellen, dass /share existiert
+if [ ! -d /share ]; then
+  echo "ERROR: /share is not mounted. Did you forget map: - share:rw in config.yaml?"
+  exit 1
 fi
 
-# Nur zur Kontrolle (Debug-Ausgabe ins Log)
-echo "📂 Inhalt von /app/data:"
-ls -la /app/data || echo "⚠️  /app/data nicht lesbar"
+# Sicherstellen, dass persistentes Verzeichnis da ist
+mkdir -p "$SHARE_DATA_DIR"
 
-# Start der Anwendung
+# Nur setzen, wenn der Symlink nicht existiert
+if [ ! -L /app/data ]; then
+  echo "Setting up symlink from /app/data to $SHARE_DATA_DIR"
+  rm -rf /app/data
+  ln -s "$SHARE_DATA_DIR" /app/data
+fi
+
+# Start der App
 exec ./start-services.sh
